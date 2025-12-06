@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phoenix Coalition — Strong enough to lead</title>
+    <meta name="description"
+        content="Phoenix Coalition campaign site — platform, preamble, candidates, media, events, and press." />
+    <style>
+        :root {
+            --charcoal: #151515;
+            --card: #222222;
+            --ember: #e04a1f;
+            --white: #ffffff;
+            --muted: #cfcfcf;
+            --radius: 12px;
+            --max-width: 1200px;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: var(--charcoal);
+            color: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--ember)
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 28px
+        }
+
+        /* Header / nav */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.35));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(4px);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .crest {
+            width: 56px;
+            height: 56px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--ember), #b03018);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 18px
+        }
+
+        nav ul {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-weight: 600
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.03)
+        }
+
+        .cta {
+            margin-left: auto
+        }
+
+        .btn {
+            background: var(--ember);
+            color: var(--white);
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        /* Hero */
+        .hero {
+            padding: 48px 0;
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 28px;
+            align-items: center
+        }
+
+        .headline {
+            font-size: 34px;
+            line-height: 1.02;
+            margin: 0
+        }
+
+        .slogan {
+            margin-top: 12px;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--ember), #b53a23);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: 700
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 15px;
+            margin-top: 16px
+        }
+
+        /* cards / layout */
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: 12px;
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.03)
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        /* Platform */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-top: 18px
+        }
+
+        .plank {
+            padding: 14px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.08));
+        }
+
+        .plank h3 {
+            margin: 0 0 8px
+        }
+
+        /* use pre-line so PDF line breaks become paragraph breaks but preserve normal spacing */
+        .plank p {
+            margin: 0 0 14px;
+            color: var(--muted);
+            white-space: pre-line;
+            line-height: 1.65
+        }
+
+        /* candidates */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px
+        }
+
+        .team-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .team-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02)
+        }
+
+        /* forms / footer */
+        footer {
+            margin-top: 36px;
+            padding: 28px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--muted)
+        }
+
+        @media(max-width:980px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .two-col {
+                grid-template-columns: 1fr
+            }
+
+            .team-item {
+                flex-direction: column;
+                align-items: flex-start
+            }
+        }
+
+        /* accessibility */
+        a:focus,
+        button:focus {
+            outline: 3px solid rgba(224, 74, 31, 0.18);
+            outline-offset: 3px
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <div class="brand">
+                <div class="crest">PC</div>
+                <div>
+                    <div style="font-weight:800">Phoenix Coalition</div>
+                    <div style="font-size:13px;color:var(--muted)">Strong enough to lead, principled enough to protect,
+                        and united enough to move forward.</div>
+                </div>
+            </div>
+
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#preamble">Preamble</a></li>
+                    <li><a href="#platform">Platform</a></li>
+                    <li><a href="#candidates">Candidates & Team</a></li>
+                    <li><a href="#media">Media</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="home" class="hero">
+            <div>
+                <h1 class="headline">Phoenix Coalition — Rebuild with Strength & Principle</h1>
+                <div class="slogan">Strong enough to lead, principled enough to protect, and united enough to move
+                    forward.</div>
+                <p class="lead">Led by Presidential Candidate <strong>Alma Coin</strong> and Vice President
+                    <strong>Haymitch</strong>. The Phoenix Coalition stands for disciplined rebuilding and practical,
+                    enforceable policy designed to restore order, prosperity, and trust.</p>
+
+                <div style="margin-top:18px;display:flex;gap:12px">
+                    <a class="btn" href="#platform">Read Full Platform</a>
+                    <a class="card" href="#preamble"
+                        style="display:inline-flex;align-items:center;padding:10px 14px;text-decoration:none;color:var(--white);border-radius:10px">Read
+                        Preamble</a>
+                </div>
+
+                <div style="margin-top:12px;color:var(--muted);font-size:13px">Slogan: <em>Strong enough to lead,
+                        principled enough to protect, and united enough to move forward.</em></div>
+            </div>
+
+            <aside class="card" aria-hidden="true">
+                <div style="display:flex;gap:12px;align-items:center">
+                    <div
+                        style="width:64px;height:64px;border-radius:8px;background:linear-gradient(135deg,var(--ember),#b03018);display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800">
+                        AC</div>
+                    <div>
+                        <div style="font-weight:800">Alma Coin</div>
+                        <div style="color:var(--muted);font-size:13px">Presidential Candidate</div>
+                    </div>
+                </div>
+
+                <div style="margin-top:14px">
+                    <div style="font-weight:700">Campaign Leadership</div>
+                    <div style="color:var(--muted);font-size:13px;margin-top:8px">Alma Coin — President<br>Haymitch —
+                        Vice President</div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Preamble -->
+        <section id="preamble" style="margin-top:28px">
+            <h2>Preamble</h2>
+            <div class="card" style="margin-top:12px;color:var(--muted);white-space:pre-line;line-height:1.6">
+                Welcome to The Phoenix Coalition. Our mission is to build a better future through innovative policies
+                and governance. The Phoenix Coalition believes that lasting freedom comes not from constant upheaval,
+                but from rebuilding with discipline, fairness, and purpose.
+
+                After prolonged polarization, economic inequality, and loss of trust in leadership, we refuse to choose
+                between disorder and complacency. Instead, we rise from the ashes of past failures to forge a new path
+                forward. We will lead with strength, enforcing law with consistency, protecting the economy, and
+                respecting every citizen's right to live freely in their personal life.
+
+                We believe in a government that is firm yet fair, one that upholds the rule of law while ensuring
+                justice and opportunity for all while staying out of personal choices. The role of the government is to
+                keep order, ensure opportunity, and defend liberty; not to moralize or divide.
+
+                We will fight corruption wherever it lives, whether in government offices or boardrooms. We will rebuild
+                trust in our institutions, restore dignity to work, and make sure that safety and stability are rights,
+                not privileges.
+            </div>
+        </section>
+
+        <!-- Platform -->
+        <section id="platform" style="margin-top:28px">
+            <h2>Full Platform</h2>
+
+            <div style="margin-top:12px" class="card">
+                <div style="font-weight:800">Complete Policy Planks</div>
+                <div style="color:var(--muted);font-size:13px;margin-top:8px">The platform content below appears as
+                    originally submitted in the Party Platform document.</div>
+
+                <div class="platform-grid" style="margin-top:12px">
+                    <section class="plank">
+                        <h3>Criminal Justice</h3>
+                        <p>The current criminal justice system in the United States is a failing institution that
+                            delivers neither safety to citizens nor fairness to its subjects. Two decades into reform,
+                            our nation still imprisons more than 2.2 million people, a number inflated by the nearly 10
+                            million admissions processed through county jails every year. Violence has been in decline
+                            since the 1990s, but the Bureau of Justice Statistics estimates that almost two-thirds of
+                            released prisoners are rearrested within three years (“Incarceration & Reentry | ASPE”).
+                            This is evidence of a system that punishes efficiently yet rehabilitates poorly. The
+                            imbalance shows that the pursuit of justice has been supplanted by the machinery of
+                            bureaucracy, vast in scale and limited in effectiveness.</p>
+
+                        <p>All elements of national stability suffer when a justice system goes awry. Where crime is
+                            endemic and enforcement lacks credibility, citizens lose faith in the institutions meant to
+                            keep them safe. Researchers estimate that about 40 percent of the incarcerated population is
+                            behind bars without a clear justification from a public safety standpoint, costing taxpayers
+                            billions without demonstrable evidence of deterrence. The fragmented and slow reporting of
+                            national crime data, identified by the Council on Criminal Justice as a key barrier to sound
+                            policymaking, prevents timely and targeted responses. A rudderless system diminishes both
+                            safety and liberty, undermining civic trust at its foundation. The legitimacy of the rule of
+                            law depends not on the fervor with which it punishes but on its precision.</p>
+
+                        <p>The Phoenix Coalition believes liberty requires order and order requires accountability.
+                            Justice should be predictable, quantifiable, transparent, strict in defending peace yet
+                            restrained in intrusion into private life. The Phoenix Coalition rejects, as dangerous to
+                            freedom, both leniency that enables disorder and excess that erodes freedom. The purpose of
+                            law is not vengeance. It's equilibrium. A society cannot thrive when it tolerates
+                            lawlessness or punishes its own people as an industry. The party supports firm enforcement
+                            guided by data, fairness, and public oversight, ensuring that discipline strengthens liberty
+                            rather than restricts it.</p>
+
+                        <p>The Phoenix Coalition advocates for a system based on truth, proportionality, and
+                            effectiveness. The cornerstone will be reliable data of national crime and sentencing
+                            through an unprecedented digital transparency effort that thoroughly tracks sentencing
+                            trends, recidivism rates, and enforcement outcomes. Evidence-based policing and judicial
+                            policy replace reactive enforcement, focusing resources on violent and repeat offenders
+                            rather than low-level, nonviolent cases. Targeted intervention has always been proven to cut
+                            violence far more effectively than mass incarceration. Sentencing reform will be based on
+                            proportionality and purpose, with mandatory minimums and outdated "three-strikes" laws
+                            revised to reflect actual public safety outcomes. With 17 percent of state prisoners
+                            incarcerated for nonviolent drug offenses, the need for judicial discretion and
+                            rehabilitative alternatives is clear. Evidence-based reentry programs focused on employment,
+                            housing stability, and behavioral accountability will be expanded. Research from the
+                            National Institute of Justice shows that such programs can reduce recidivism by up to 20
+                            percent. Finally, transparency will be institutionalized through standardized public
+                            reporting of arrest, conviction, and sentencing data. Open access to performance metrics at
+                            every stage will ensure oversight, build public confidence, and prevent abuses of power.</p>
+                    </section>
+
+                    <section class="plank">
+                        <h3>Healthcare & Pharmaceutical Regulation</h3>
+                        <p>For too long, healthcare in the United States has been treated as a commodity rather than a
+                            collective necessity. The Phoenix Coalition rejects this notion. Health is not a product to
+                            be bought or sold; it is a tool of national survival. A nation’s longevity and strength
+                            depend on the physical and mental endurance of its people. According to the Centers for
+                            Disease Control and Prevention (CDC), expanding access to healthcare saves more than 212,000
+                            lives in the United States every year. The average American life expectancy stands at
+                            approximately 77 years, compared with 68 years in countries with minimal healthcare
+                            infrastructure, such as India. These differences illustrate a fundamental truth: access to
+                            medical care determines whether a population thrives or decays.</p>
+
+                        <p>A healthy population is a productive population. The Coalition views healthcare not as a
+                            matter of convenience, but as a foundation of national security and efficiency. Research
+                            from the Kaiser Family Foundation (2024) estimates that preventable illness costs the U.S.
+                            economy more than $260 billion annually in lost productivity. Illness undermines labor
+                            strength, weakens morale, and erodes the resilience of the workforce. Therefore, ensuring
+                            universal access to medical care is not merely a moral imperative — it is a strategic
+                            necessity. The the right to health carries with it a civic duty to maintain that health for
+                            the collective good.</p>
+
+                        <p>The Phoenix Coalition guarantees universal medical care as a right of citizenship and a
+                            requirement of service. Every citizen, regardless of class or occupation, shall receive the
+                            treatment necessary to preserve their ability to perform their societal function. In return,
+                            all citizens must comply with regular health evaluations and contribute anonymized data to
+                            federal health systems for research and monitoring. Refusal to participate constitutes
+                            refusal to serve. Health resources are allocated by strategic priority: individuals
+                            essential to defense, production, or research receive priority in treatment and recovery.
+                            Medicine is distributed according to necessity, not desire. Rehabilitation is reserved for
+                            those who contribute to the collective; idleness does not merit restoration.</p>
+
+                        <p>The Coalition envisions a healthcare system based on universal access, scientific regulation,
+                            and moral discipline. All pharmaceuticals and medical substances shall be subject to the
+                            oversight of the Food and Drug Administration (FDA). Each drug must pass through the FDA’s
+                            12-step approval process, a safeguard established by the 1938 Federal Food, Drug, and
+                            Cosmetic Act to prevent the circulation of unsafe products. The unregulated creation or
+                            distribution of drugs constitutes a direct act against the nation’s welfare. Medication
+                            exists to heal, not to gratify.</p>
+
+                        <p>Pharmaceutical production will occur exclusively under federal supervision. Government
+                            laboratories will control dosage, availability, and purpose of all medical products. This
+                            regulation will eliminate the epidemic of overdose that claims more than 110,000 American
+                            lives annually, according to the National Institute on Drug Abuse (2024). Recreational drug
+                            use is prohibited; chemical dependency weakens individual discipline and collective
+                            strength. The 6.8 million Americans who currently use marijuana recreationally represent the
+                            erosion of civic resilience. Scientific research links such use to delayed neurological
+                            development and dependency among adolescents. The Coalition stands unequivocally against
+                            these indulgences.</p>
+
+                        <p>Scientific advancement remains a national priority. As of June 2025, the United States hosts
+                            roughly 159,000 registered clinical trials, with new drug development requiring an average
+                            of 10 to 12 years and $2.6 billion to complete. Only 12 percent of candidates achieve
+                            approval. These figures justify the Coalition’s centralized model of research oversight,
+                            ensuring that time, funding, and innovation are directed toward medicine that enhances
+                            survival and operational strength; trauma care, radiation treatment, and resistance
+                            medicine. Experimental treatments must be sanctioned through federal review to ensure safety
+                            and alignment with national objectives. The Coalition rejects medical decadence in all
+                            forms. Recreational pharmaceuticals and pain-numbing indulgences divert resources from
+                            genuine healing. Globally, 15.8 million aesthetic surgeries were performed in 2023,
+                            including 1.6 million in the United States, often with medical complications. In the same
+                            year, 14.2 million Americans misused prescription psychotherapeutic drugs, and 8.5 million
+                            abused pain relievers. Such misuse represents moral and civic decay. The Coalition affirms
+                            that medicine exists to restore function, not to gratify vanity. Within this system, the
+                            body serves the mission, medicine serves the people, and the people serve the nation.</p>
+
+                        <p>No life will be wasted to negligence, indulgence, or inequity. Health is not a privilege; it
+                            is the instrument by which the Coalition ensures survival, progress, and the unbreakable
+                            vitality of the United States.</p>
+                    </section>
+
+                    <section class="plank">
+                        <h3>Education</h3>
+                        <p>The United States emerges from war with an education system that is fractured from decades of
+                            inaccessibility, deprivation, and neglect. Under the Capitol, learning was not a right but a
+                            privilege granted selectively. It was weaponized to maintain control and was stripped from
+                            many districts entirely; approximately 21% of U.S. adults are unable to complete literacy
+                            tasks at a level necessary for the modern workforce, and an estimated 130 million adults
+                            have low literacy skills. The result of inconsistent education is a nation whose citizens
+                            lack a solid academic foundation, a vocational skill set, and an understanding of civics.
+                            This divided education system has led to a divided people, and division cannot be afforded
+                            in the post-war nation.</p>
+
+                        <p>The Coalition believes a stable nation cannot exist without an educated society. National
+                            resilience is built on the backbone of literacy, critical thinking, and practical
+                            competence. Without these skills, misinformation spreads easily and productively weakens,
+                            which slows our recovery from the war. The Phoenix Coalition understands that the same
+                            forces that enabled the dominant to dominate the nation, dependency and a lack of education,
+                            threaten long-term stability. Once the curriculum is predictable, accessible, and
+                            measurable, liberty and order will be strengthened.</p>
+
+                        <p>The Phoenix Coalition asserts that education is a collective obligation: citizens have the
+                            duty to learn, while the nation has the responsibility to teach our generation. Our party
+                            proposes a national curriculum reform, which would have a unified national standard of
+                            education that must be taught nationwide, with emphasis on factual literacy, scientific
+                            knowledge, and technical experience rather than arbitrary skill sets. These standards will
+                            be essential to national reconstruction. To achieve this, our party will establish a
+                            National Teacher Corps to train instructors and professors to consistent standards and
+                            deploy them in underserved areas.</p>
+
+                        <p>A nation’s strength depends on its ability to prepare its own citizens for work and civic
+                            participation. Adults with low literacy are far less likely to secure stable, living wage
+                            employment. To restore competence and eliminate educational inequity nationwide, the Phoenix
+                            Coalition will repurpose existing facilities into nationwide educational facilities. These
+                            facilities will offer apprenticeships, technical certifications, and community service
+                            programs. A centralized monitoring system will track literacy rates and workplace readiness
+                            and ensure that resources are distributed evenly throughout. Although education is a right,
+                            citizens are expected to participate in and complete this program, and the state will
+                            guarantee access to learning materials and meaningful education. The Phoenix Coalition
+                            stands against the inequity of knowledge, both the government’s weaponization of it and its
+                            neglect of those who desperately need it. The Coalition will induce a populace that is both
+                            informed about current issues and able to act on that knowledge practically. We will ensure
+                            that citizens can meaningfully contribute to our nation, think for themselves, and protect
+                            their freedom. Reform in education is what will turn our divided, struggling society into a
+                            unified, advancing one.</p>
+                    </section>
+
+                    <section class="plank">
+                        <h3>Second Amendment Rights</h3>
+                        <p>The national debate on the Second Amendment has grown increasingly polarized, with states
+                            adopting widely different gun laws and inconsistent enforcement practices. The United States
+                            continues to face elevated levels of gun violence, with more than 48,000 firearm deaths
+                            recorded in 2022 according to the Centers for Disease Control and Prevention (Centers for
+                            Disease Control and Prevention). At the same time, tens of millions of Americans legally own
+                            firearms for self-defense, hunting, and sport. The current policy landscape reflects tension
+                            between the constitutional right to bear arms and the need for public safety in a society
+                            where access to weapons varies greatly across jurisdictions.</p>
+
+                        <p>The Phoenix Coalition affirms that the right to keep and bear arms is a constitutional
+                            liberty. This right must not depend on shifting regional preferences or inconsistent state
+                            regulations. At the same time, rights carry obligations. Without responsible ownership and
+                            reliable enforcement mechanisms, individual liberty can produce instability. The Coalition
+                            rejects bans that target responsible firearm owners, but also rejects permissive systems
+                            that fail to screen individuals who pose demonstrable risks to public safety. Order arises
+                            not from prohibition or abandonment, but from structured, evidence-based regulation.</p>
+
+                        <p>The Phoenix Coalition supports a national standard for universal background checks
+                            coordinated through updated federal databases. The Department of Justice has identified
+                            persistent gaps in the National Instant Criminal Background Check System due to incomplete
+                            or outdated records, which weaken enforcement and allow avoidable loopholes (U.S. Department
+                            of Justice). Updating these systems is necessary for accuracy and consistency.</p>
+
+                        <p>The Coalition also supports mandatory safe-storage requirements to reduce unauthorized access
+                            and prevent accidental deaths. Additionally, the party endorses firearm licensing systems
+                            that include safety and handling training. Research from the Johns Hopkins Center for Gun
+                            Violence Solutions indicates that states with licensing and training requirements experience
+                            significantly lower firearm homicide rates, demonstrating that structured training improves
+                            safety outcomes (Johns Hopkins Center for Gun Violence Solutions).</p>
+
+                        <p>The Coalition supports targeted enforcement measures against trafficking networks, ghost gun
+                            manufacturing, and individuals who repeatedly violate gun laws. Red flag laws that include
+                            clear due-process protections can prevent imminent harm while maintaining constitutional
+                            standards. The Coalition opposes sweeping bans on common civilian firearms, but supports
+                            regulating weapons that lack clear civilian purpose and pose heightened public risks. All
+                            policies must be transparent, data-driven, and enforced consistently to avoid arbitrary
+                            restrictions.</p>
+
+                        <p>The Phoenix Coalition views the Second Amendment as an essential safeguard of individual
+                            liberty. To preserve that liberty, the nation must maintain structures that prevent violence
+                            and promote responsible ownership. Balanced policy, grounded in research and accountability,
+                            protects both constitutional rights and community safety. Through national standards,
+                            evidence-based regulation, and focused enforcement, the Coalition supports an approach that
+                            values freedom and order equally.</p>
+                    </section>
+
+                    <!-- Remaining planks from the uploaded platform file should continue here as full paragraphs.
+               If you notice missing paragraphs compared to your source PDF, paste them in the same <p>…</p> form
+               and they'll render consistently without odd indents. -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Candidates & Team -->
+        <section id="candidates" style="margin-top:28px">
+            <h2>Candidates & Team Responsibilities</h2>
+            <div class="card" style="margin-top:12px">
+                <div style="font-weight:800">Leadership</div>
+                <div style="color:var(--muted);margin-top:10px">Alma Coin — President<br>Haymitch — Vice President</div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+                <h3 style="margin-top:0">Team & Roles</h3>
+                <div class="team-list" style="margin-top:8px">
+                    <div class="team-item">
+                        <div>Raine</div>
+                        <div class="muted">Webmaster / Social media post 1 & 3 / Commercial - Attack / Website -
+                            Completed</div>
+                    </div>
+                    <div class="team-item">
+                        <div>Robby</div>
+                        <div class="muted">President / Stump Speech / Campaign Event / Commercial - Bio</div>
+                    </div>
+                    <div class="team-item">
+                        <div>Sandhya</div>
+                        <div class="muted">Webmaster / Campaign manager / Theme Song / Press Conference / Stump Speech /
+                            Website</div>
+                    </div>
+                    <div class="team-item">
+                        <div>Rishi</div>
+                        <div class="muted">Vice President / Public relations manager / Poster / Social media Post 2
+                        </div>
+                    </div>
+                    <div class="team-item">
+                        <div>Josh</div>
+                        <div class="muted">Policy Expert / Flyers / Yard sign / Recorder</div>
+                    </div>
+                    <div class="team-item">
+                        <div>Touraj</div>
+                        <div class="muted">Campaign Manager / Campaign Slogan / Press Conference - Questions</div>
+                    </div>
+                    <div class="team-item">
+                        <div>Naman</div>
+                        <div class="muted">Press Secretary / Theme Song / Button / Commercial - Issue</div>
+                    </div>
+                    <div class="team-item">
+                        <div>Niam</div>
+                        <div class="muted">Media Advisor / Niam</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media & Contact -->
+        <section id="media" style="margin-top:28px">
+            <h2>Media & Events</h2>
+            <div class="card" style="margin-top:12px">
+                <strong>Featured Commercial</strong>
+                <div style="margin-top:10px;color:var(--muted)">Embed your official videos here. Replace the iframe src
+                    with your YouTube id.</div>
+                <div
+                    style="margin-top:12px;background:#000;border-radius:10px;padding:8px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--muted)">
+                    Video placeholder</div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+                <strong>Upcoming Events</strong>
+                <ul style="padding-left:18px;margin:8px 0;color:var(--muted)">
+                    <li>Capital Rally — June 1, 2025 — Alma Coin speaking</li>
+                    <li>Policy Forum — June 15, 2025 — Haymitch moderating</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" style="margin-top:28px;margin-bottom:60px">
+            <h2>Contact & Get Involved</h2>
+            <div class="card" style="margin-top:12px;display:flex;gap:20px;flex-wrap:wrap">
+                <form style="flex:1;min-width:240px"
+                    onsubmit="event.preventDefault();alert('Form stub — wire to your backend or Netlify Forms')">
+                    <label style="display:block;margin-bottom:8px;font-weight:700;color:var(--white)">Email</label>
+                    <input type="email" required placeholder="you@domain.com"
+                        style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white);" />
+                    <label style="display:block;margin:8px 0 8px;font-weight:700;color:var(--white)">Message</label>
+                    <textarea required placeholder="How would you like to help?"
+                        style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white);min-height:120px"></textarea>
+                    <div style="margin-top:12px"><button class="btn" type="submit">Send</button></div>
+                </form>
+
+                <div style="width:320px;min-width:220px">
+                    <h4 style="margin-top:0">Campaign Office</h4>
+                    <div style="color:var(--muted);font-size:14px">Press: press@phoenixcoalition.example</div>
+                    <div style="color:var(--muted);font-size:14px;margin-top:6px">Volunteer:
+                        volunteer@phoenixcoalition.example</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+                <div>
+                    <div style="font-weight:800">Phoenix Coalition</div>
+                    <div style="color:var(--muted);font-size:13px">&copy; 2025 Phoenix Coalition</div>
+                </div>
+                <div style="color:var(--muted);font-size:13px">Strong enough to lead, principled enough to protect, and
+                    united enough to move forward.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // basic nav smooth scroll + active state
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const href = a.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const el = document.querySelector(href);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('nav a').forEach(x => x.classList.remove('active'));
+                    if (a.closest('nav')) a.classList.add('active');
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
